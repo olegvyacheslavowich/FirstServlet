@@ -18,13 +18,19 @@ public class MyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         super.doPost(request, response);
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        out.println("With POST methio");
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html");
+       String str = request.getParameter("login");
+        String string = request.getParameter("pass");
         PrintWriter out = response.getWriter();
-        out.println("Hello Word");
+        out.println("Login: " + str + "; \n Pass: " + string);
+        out.close();
     }
 }
